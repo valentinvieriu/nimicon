@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/@nimiq/style@v0.6.4/nimiq-style.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Mono&text=0123456789ABCDEFGHJKLMNPQRSTUVXY" rel="stylesheet">
     <title>Nimicon</title>
     <style>
 
@@ -29,11 +28,12 @@
             </div>
             <div class="nq-card-footer nq-text-s">
                 <p>
-                    If you liked it donate some NIM to: <br> 
+                    If you liked it, share some 🍺 NIMS <br> 
                     <a href="https://safe.nimiq.com/#_request/NQ42-BEER-2C1U-6ANE-8HTU-2X54-3S2Y-H6BP-MJ5L_" target="_blank">
                         <img src="/api/?size=50&text=NQ42 BEER 2C1U 6ANE 8HTU 2X54 3S2Y H6BP MJ5L">
                         <br>
                         NQ42 BEER 2C1U 6ANE 8HTU 2X54 3S2Y H6BP MJ5L</a> </p>
+                <p>Fork it on <a href="https://github.com/valentinvieriu/nimicon" target="_blank">Github</a></p>
             </div>
         </div>
     </body>
@@ -48,8 +48,9 @@
         $inputText.value = 'amazing';
         $image.src=getImageUrl('amazing', 350);
         $inputText.addEventListener('input', e => {
-            $image.src=getImageUrl(e.target.value, 350);
-            $code.textContent = `https://nimicon.app${$image.src=getImageUrl(e.target.value, 350)}`;
+            const url = `https://nimicon.app${$image.src=getImageUrl(e.target.value, 350)}`.replace(" ", "%20");
+            $image.src=url;
+            $code.innerHTML = `<a href="${url}" target="_blank">${url}</a>`
         });
     </script>
 </html>
