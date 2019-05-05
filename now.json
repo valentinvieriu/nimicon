@@ -1,22 +1,32 @@
 {
-    "version": 2,
-    "alias":"nimicon.app",
-    "regions": ["cdg"],
-    "builds": [
-      { "src": "api/*.js", "use": "now-micro", "config": { "maxLambdaSize": "30mb" } },
-      { "src": "www/**", "use": "@now/static" }
-
-    ],
-    "routes": [
-        { "src": "/api/(.*)", "dest": "api/index.js" },
-      {
-        "src": "/(.*)",
+  "version": 2,
+  "alias": "nimicon.app",
+  "regions": ["cdg"],
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "now-micro",
+      "config": { "maxLambdaSize": "30mb" }
+    },
+    { "src": "www/**", "use": "@now/static" }
+  ],
+  "routes": [
+    { 
+        "src": "/api/(.*)", 
         "methods": ["GET"],
-        "dest": "/www/index.html",
+        "dest": "api/index.js",
         "headers": {
-          "x-request-path": "$1",
-          "Cache-Control": "s-maxage=86400"
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
         }
+    },
+    {
+      "src": "/(.*)",
+      "methods": ["GET"],
+      "dest": "/www/index.html",
+      "headers": {
+        "x-request-path": "$1",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
-    ]
-  }
+    }
+  ]
+}
