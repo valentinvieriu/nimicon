@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "alias":"nimicon.app",
+    "regions": ["cdg"],
+    "builds": [
+      { "src": "api/*.js", "use": "now-micro", "config": { "maxLambdaSize": "30mb" } },
+      { "src": "www/**", "use": "@now/static" }
+
+    ],
+    "routes": [
+        { "src": "/api/(.*)", "dest": "api/index.js" },
+      {
+        "src": "/(.*)",
+        "methods": ["GET"],
+        "dest": "/www/index.html",
+        "headers": {
+          "x-request-path": "$1",
+          "Cache-Control": "s-maxage=86400"
+        }
+      }
+    ]
+  }
