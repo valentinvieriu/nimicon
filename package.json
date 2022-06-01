@@ -20,7 +20,7 @@
     "@nimiq/iqons": "^1.4.3",
     "micro": "^9.3.4",
     "now-micro": "^0.3.0",
-    "sharp": "^0.22.1"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "micro-dev": "^3.0.0"
